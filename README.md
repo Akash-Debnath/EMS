@@ -86,6 +86,7 @@ Few pages still not connected to sidebar so need to check by URL hitting  ( url 
 - Integrate gmail                                                **(Remaining)**
 - Profile Update history add in db & update when approve         **(Remaining)**
 - Attachment send to specific department/employee, attachment file delete issue when edit attachment  **(Remaining)**
-- Administrator Privilege and Permission Privilege is implemented but not used for ACL. [Can remove as not of use]
+- Administrator Privilege and Permission Privilege is implemented but not used for ACL. [Can remove as not of use] 
+- Git updated
 
 
