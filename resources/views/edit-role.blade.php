@@ -66,7 +66,7 @@
                 <div class="card-header">
 
                     <div class="col-12">
-                        <h5 class="mb-0 "> Add New Role </h5>
+                        <h5 class="mb-0 "> Edit Role </h5>
     
                     </div>
                 </div>

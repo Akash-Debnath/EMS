@@ -93,8 +93,8 @@
                                   {{$a->emp_id}}
                                 </p>
                                 <a href="http://">{{$e->name}}</a>
-                                <p class="mb-0">{{$e->userDesignation->designation}}</p>
-                                <p class="mb-0">{{$e->department->dept_name}}</p>
+                                <p class="mb-0">{{$e->userDesignation ? $e->userDesignation->designation : ''}}</p>
+                                <p class="mb-0">{{$e->department ? $e->department->dept_name : ''}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -187,7 +187,7 @@
                                 </p>
                                 <a href="http://">{{$e->name}}</a>
                                 <p class="mb-0">{{$e->userDesignation->designation}}</p>
-                                <p class="mb-0">{{$e->Department->dept_name}}</p>
+                                <p class="mb-0">{{$e->Department ? $e->Department->dept_name : ''}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -278,7 +278,7 @@
                                 </p>
                                 <a href="http://">{{$e->name}}</a>
                                 <p class="mb-0">{{$e->userDesignation->designation}}</p>
-                                <p class="mb-0">{{$e->department->dept_name}}</p>
+                                <p class="mb-0">{{$e->department ? $e->department->dept_name : ''}}</p>
                             </div>
                         </div>
                         <div class="row">

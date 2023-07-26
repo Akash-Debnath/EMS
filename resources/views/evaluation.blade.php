@@ -66,7 +66,7 @@
 <!--edit here-->
 @section('row')
   <div class="row">
-    @if(Auth::user()->can('evaluation-create'))
+    @if(Auth::user()->can('evaluation-create') && Auth::user()->username != $empInfo->emp_id)
     <div class="col-12 d-flex mb-3">
       <a href="{{ url('evaluations/'.$create.'/'.$empInfo->emp_id) }}" class="btn btn-sm btn-info ml-auto">New Evaluation</a>
     </div>

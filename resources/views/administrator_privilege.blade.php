@@ -90,7 +90,7 @@
 
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $dept->dept_name }}</td>
+                                    <td>{{ $dept ? $dept->dept_name : '' }}</td>
 
                                     <td>
 
@@ -131,7 +131,7 @@
                                                                         <i>{{ $priv->employee ? $priv->employee->userDesignation->designation : '' }}</i>
                                                                     </p>
                                                                     <p class="mb-0">
-                                                                        {{ $priv->employee ? $priv->employee->department->dept_name : '' }}
+                                                                        {{ $priv->employee ? ($priv->employee->department ? $priv->employee->department->dept_name : '') : '' }}
                                                                     </p>
                                                                 </div>
                                                                 <!-- /.card-body -->
@@ -224,7 +224,7 @@
                                                                     <i>{{ $priv->employee ? $priv->employee->userDesignation->designation : '' }}</i>
                                                                 </p>
                                                                 <p class="mb-0">
-                                                                    <i>{{ $priv->employee ? $priv->employee->department->dept_name : '' }}</i>
+                                                                    <i>{{ $priv->employee ? ($priv->employee->department ? $priv->employee->department->dept_name : '') : '' }}</i>
                                                                 </p>
                                                             </div>
                                                             <!-- /.card-body -->
@@ -314,7 +314,7 @@
                                                                     <i>{{ $priv->employee ? $priv->employee->userDesignation->designation : '' }}</i>
                                                                 </p>
                                                                 <p class="mb-0">
-                                                                    <i>{{ $priv->employee ? $priv->employee->department->dept_name : '' }}</i>
+                                                                    <i>{{ $priv->employee ? ($priv->employee->department ? $priv->employee->department->dept_name : '') : '' }}</i>
                                                                 </p>
                                                             </div>
                                                             <!-- /.card-body -->
@@ -408,7 +408,7 @@
                                                                 </p>
 
                                                                 <p class="mb-0">
-                                                                    <i>{{ $priv->employee ? $priv->employee->department->dept_name : '' }}</i>
+                                                                    <i>{{ $priv->employee ? ($priv->employee->department ? $priv->employee->department->dept_name : '') : '' }}</i>
                                                                 </p>
                                                             </div>
                                                             <!-- /.card-body -->

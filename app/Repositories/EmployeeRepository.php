@@ -294,7 +294,7 @@ class EmployeeRepository implements RepositoryInterface
         }
 
 
-         $user = User::where('username',$employee->emp_id)->first();
+        $user = User::where('username',$employee->emp_id)->first();
 
         $user->roles()->detach();
         if ($data->roles) {
@@ -401,10 +401,17 @@ class EmployeeRepository implements RepositoryInterface
     public function createStatus($data)
     {
         $status = new Status_log;
+        // $statusUpdate = new Employee;
+
         $status->emp_id = $data->emp_id;
         $status->status = $data->status;
         $status->date = $data->date;
-        return $status->save();
+        $status->save();
+
+        Employee::where('emp_id', $data->emp_id)->update(['status'=> $data->status]);
+
+        return; 
+
     }
 
 

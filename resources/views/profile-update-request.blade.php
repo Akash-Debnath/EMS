@@ -92,7 +92,7 @@
                         <tr class="text-center">
                             <td>{{ ++$i }}</td>
                             <td>{{ $request->emp_id }}</td>
-                            <td>{{ $request->employee->name }}</td>
+                            <td>{{ $request->employee ? $request->employee->name : '' }}</td>
                             <td>{{ $request->mobile }}</td>
                             <td>{{ $request->phone }}</td>
                             <td>{{ $request->present_address }}</td>

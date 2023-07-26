@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="{{ url('/') }}" class="brand-link">
-    <img src="{{asset('dist/img/logo.svg')}}" alt="Genuity_Logo" class="brand-image img-circle elevation-3">
-    <span class="brand-text font-weight-bolder">EMS</span>
+    <img src="{{asset('dist/img/govt.png')}}" alt="Genuity_Logo" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-bolder">Smart EMS</span>
   </a>
 
   <!-- Sidebar -->
@@ -75,7 +75,7 @@
         <li class="nav-item {{'attachment'  == request()->path() ? 'menu-open' : ''}} {{'notice'  == request()->path() ? 'menu-open' : ''}} {{'policy'  == request()->path() ? 'menu-open' : ''}} {{'holiday'  == request()->path() ? 'menu-open' : ''}} {{'incident'  == request()->path() ? 'menu-open' : ''}} {{'job-description-board'  == request()->path() ? 'menu-open' : ''}} "> 
           <a href="pages/widgets.html" class="nav-link ">
             <i class="nav-icon fas fa-columns"></i>
-            <p> Board <i class="fas fa-angle-left right"></i> </p>
+            <p> Announcer <i class="fas fa-angle-left right"></i> </p>
           </a>
           <ul class="nav nav-treeview">
             @if(Auth::user()->can( 'dashboard-board-notice'))
@@ -195,24 +195,26 @@
           </ul>
         </li>
 
-        <li class="nav-item {{'archive' == request()->path() ? 'menu-open' : ''}}">
-          <a href="/archive" class="nav-link">
-            <i class="nav-icon fas fa-archive"></i>
-            <p>
-              Archive
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{ url('archive') }}" class="nav-link {{'archive' == request()->path() ? 'text-info' : ''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>All
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
+        @if(Auth::user()->can('dashboard-Archive'))
+          <li class="nav-item {{'archive' == request()->path() ? 'menu-open' : ''}}">
+            <a href="/archive" class="nav-link">
+              <i class="nav-icon fas fa-archive"></i>
+              <p>
+                Archive
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('archive') }}" class="nav-link {{'archive' == request()->path() ? 'text-info' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        @endif
 
         @if(Auth::user()->can('dashboard-settings'))
           <li class="nav-item {{'department' == request()->path() ? 'menu-open' : ''}} {{'designation' == request()->path() ? 'menu-open' : ''}} {{'facility' == request()->path() ? 'menu-open' : ''}} {{'note' == request()->path() ? 'menu-open' : ''}} {{'admin-prev' == request()->path() ? 'menu-open' : ''}} {{'permission-prev' == request()->path() ? 'menu-open' : ''}} {{'office-time' == request()->path() ? 'menu-open' : ''}} ">

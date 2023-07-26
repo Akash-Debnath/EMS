@@ -69,6 +69,33 @@ body:
     password: 12345678
 ```
 
+
+```
+    Role: management
+    username: PRESIDENT
+    password: 12345678
+
+    Role: hr
+    username: 21
+    password: 12345678
+
+    Role: headOfDepartment
+    username: 319
+    password: 12345678
+
+    Role: employee
+    username: 211
+    password: 12345678
+```
+
+
+
+
+
+
+
+
+
 ## 11.
 
 ```

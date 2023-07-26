@@ -18,11 +18,11 @@ class Late_early_reqController extends Controller
      */
     // late-early-pending-req
 
-    protected $lateEarlyReqService;
+    protected $Late_early_reqService;
 
-    public function __construct(Late_early_reqService $lateEarlyReqService)
+    public function __construct(Late_early_reqService $Late_early_reqService)
     {
-        $this->Late_early_reqService = $lateEarlyReqService;
+        $this->Late_early_reqService = $Late_early_reqService;
     }
 
     public function index()

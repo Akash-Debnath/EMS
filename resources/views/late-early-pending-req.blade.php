@@ -61,7 +61,7 @@
 
 <div class="row">
     @php $appr = array();  @endphp
-  @if(Auth::user()->can('lateEarly-approval-approve-refuse'))  
+  {{-- @if(Auth::user()->can('lateEarly-approval-approve-refuse'))   --}}
 {{-- Approval Request --}}
     <div class="col-12  ">
         <div class="card card-info">
@@ -138,7 +138,7 @@
         </div>
     </div>
 {{-- //Approval Request --}}
-@endif
+{{-- @endif --}}
 
 @if(Auth::user()->can('lateEarly-verification-approve-refuse'))  
 {{-- Verification Request --}}

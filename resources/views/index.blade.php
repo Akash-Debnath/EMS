@@ -26,7 +26,7 @@
     <meta name="theme-color" content="#ffffff">
     {{--    End Favicon --}}
 
-    <title>EMS @yield('title')</title>
+    <title>SEMS @yield('title')</title>
 
     @include('partials.style')
     @yield('styles')

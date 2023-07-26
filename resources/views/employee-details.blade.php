@@ -116,7 +116,7 @@
                         <span class="tag tag-danger">2 Days Ago</span>
                     </p>
                     <hr>
-                    <strong><i class="fas fa-pencil-alt mr-1"></i> Genuity Life</strong>
+                    <strong><i class="fas fa-pencil-alt mr-1"></i> Work Life</strong>
 
                     {{-- @php
                                 $date1 = $empInfo->jdate;
@@ -145,9 +145,8 @@
                     </p>
                     <hr>
                     <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-                    <p class="text-muted">Genuity Systems Ltd. is an IT company established in the year
-                        2003, provides
-                        complete suite of IP based IT services for businesses.</p>
+                    <p class="text-muted">Smart Employee Management System, is an advanced software solution designed to 
+                        streamline and automate various aspects of employee management within organizations. </p>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -190,7 +189,8 @@
 
                         <tr>
                             <td><strong>Grade</strong></td>
-                            <td>{{ $empInfo->grade ? $empInfo->grade->grade : 'None' }} &nbsp; &nbsp; <a href="" class="btn  btn-warning btn-xs " data-toggle="modal" data-target="#grade"> change </a>
+                            <td>{{ $empInfo->grade ? $empInfo->grade->grade : 'None' }} &nbsp; &nbsp;  @if (Auth::user()->can('employee-delete'))
+                                <a href="" class="btn  btn-warning btn-xs " data-toggle="modal" data-target="#grade"> change </a> @endif
                             </td>
                         </tr>
 
@@ -631,21 +631,25 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
+                                @if (Auth::user()->can('employee-edit') && Auth::user()->username != $empInfo->id) 
                                 <div class="modal-body">
-                                    <div class="row my-1">
-                                        <div class="col-12">
-                                            <button class="btn btn-info btn-sm" data-toggle="modal"
-                                                data-target="#addfacility">Add Facility
-                                            </button>
+                                        <div class="row my-1">
+                                            <div class="col-12">
+                                                <button class="btn btn-info btn-sm" data-toggle="modal"
+                                                    data-target="#addfacility">Add Facility
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                @endif
                                     <table class="table table-bordered ">
                                         <thead>
                                             <th>Facility</th>
                                             <th>From</th>
                                             <th>To</th>
                                             <th>Remark</th>
-                                            <th>Action</th>
+                                            @if (Auth::user()->can('employee-edit')) 
+                                                <th>Action</th>
+                                            @endif
                                         </thead>
                                         <tbody>
                                             @foreach ($faci as $fac)
@@ -654,34 +658,36 @@
                                                     <td>{{ $fac->from_date }}</td>
                                                     <td>{{ $fac->to_date }}</td>
                                                     <td>{{ $fac->remark }}</td>
-                                                    <td class="d-flex">
-                                                        <button class="btn btn-sm btn-warning"
-                                                            onclick="getData({{ $fac->id }})" data-toggle="modal"
-                                                            data-target="#edit_facility">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="13"
-                                                                height="13" fill="currentColor"
-                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                <path fill-rule="evenodd"
-                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                            </svg>
-                                                        </button>
-                                                        <form action="{{ url('facility-delete', $fac->id) }}"
-                                                            method="post" class="ml-1">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Are you sure want to delete facility : {{ $fac->facility }}?')">
+                                                    @if (Auth::user()->can('employee-edit') && Auth::user()->username != $empInfo->id) 
+                                                        <td class="d-flex">
+                                                            <button class="btn btn-sm btn-warning"
+                                                                onclick="getData({{ $fac->id }})" data-toggle="modal"
+                                                                data-target="#edit_facility">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13"
                                                                     height="13" fill="currentColor"
-                                                                    class="bi bi-archive" viewBox="0 0 16 16">
+                                                                    class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                                     <path
-                                                                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                                 </svg>
                                                             </button>
-                                                        </form>
-                                                    </td>
+                                                            <form action="{{ url('facility-delete', $fac->id) }}"
+                                                                method="post" class="ml-1">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                                    onclick="return confirm('Are you sure want to delete facility : {{ $fac->facility }}?')">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13"
+                                                                        height="13" fill="currentColor"
+                                                                        class="bi bi-archive" viewBox="0 0 16 16">
+                                                                        <path
+                                                                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                                                                    </svg>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -897,7 +903,6 @@
                                                             @endif
                                                         @endif
                                                     </tr>
-
                                                 </form>
                                             @endforeach
                                         </tbody>
@@ -986,7 +991,6 @@
                                                                 </button>
                                                             </form>
                                                         </div>
-
                                                         {{-- </div> --}}
                                                     </td>
                                                     @endif
@@ -1000,7 +1004,6 @@
                                     <div class="col-12 ">
                                         <form action="{{ url('add-status') }}" method="POST">
                                             @csrf
-
                                             <input type="hidden" name="emp_id" value="{{ $empInfo->emp_id }}"
                                                 hidden />
                                             <div class="row">
@@ -1075,7 +1078,7 @@
 
 <script>
     function getData(id) {
-        console.log(id);
+        // console.log(id);
         $('#facilityId').val(id);
         $.ajax({
             type: "GET",

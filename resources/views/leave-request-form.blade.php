@@ -47,8 +47,9 @@
                                 <div class="card-header d-flex justify-content-center">
 
                                     <div class="image d-flex flex-column gap-4">
-                                        <img src="{{ asset('images/gsl_logo.svg') }}" alt=""
-                                             style="height:50px; width:250px;">
+                                        <h3><strong>Organization Name</strong> </h3>
+                                        {{-- <img src="{{ asset('images/gsl_logo.svg') }}" alt=""
+                                             style="height:50px; width:250px;"> --}}
 
                                         <h4 class="mb-0 text-center">Leave Request Form</h4>
                                     </div>

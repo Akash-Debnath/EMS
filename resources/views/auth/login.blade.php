@@ -25,7 +25,7 @@
         <meta name="msapplication-TileImage" content="{{asset('/images/favicon/ms-icon-144x144.png')}}">
         <meta name="theme-color" content="#ffffff">
         {{-- End Favicon --}}
-    <title>EMS | Log in</title>
+    <title>SEMS | Log in</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -43,7 +43,7 @@
       <div class="card card-primary">
         <div class="card-area">
           <div class="card-header login-bg text-center">
-            <a href="{{ url('/') }}" class="h1"><strong>E</strong>MS</a>
+            <a href="{{ url('/') }}" class="h1"><strong>Smart EMS</strong></a>
           </div>
           <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>

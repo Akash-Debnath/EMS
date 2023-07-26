@@ -75,7 +75,6 @@
                             <div class="col-md-2 mt-2 mt-md-0">
                                 <button type="submit" class="btn btn-sm btn-info btn-block ">Done</button>
                             </div>
-
                         </div>
                     </div>
                 </form>
